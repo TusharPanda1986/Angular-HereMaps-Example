@@ -48,7 +48,7 @@ export class HolderComponent implements OnInit, AfterViewInit, OnDestroy, OnChan
 
   ngOnInit(): void {
     this.platform = new H.service.Platform({
-      apikey: 'A4mAGN4zDl4qA41HXQFQNtdkIf3WVocj1tN2rNCjSZM'
+      apikey: '' // get key from https://developer.here.com/projects
     });
 
     this.coords = Constants.airports;

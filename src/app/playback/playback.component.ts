@@ -81,7 +81,7 @@ export class PlaybackComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit(): void {
     this.platform = new H.service.Platform({
-      apikey: 'A4mAGN4zDl4qA41HXQFQNtdkIf3WVocj1tN2rNCjSZM'
+      apikey: '' // get key from https://developer.here.com/projects
     });
   }
 
