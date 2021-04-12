@@ -6,18 +6,22 @@ import { HttpClientModule } from '@angular/common/http';
 import { HolderComponent } from './holder/holder.component';
 import { PlaybackComponent } from './playback/playback.component';
 import { appRoutingModule } from './app.routing';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { PaginationBuubleComponent } from './pagination-buuble/pagination-buuble.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HolderComponent,
-    PlaybackComponent
+    PlaybackComponent,
+    PaginationBuubleComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    appRoutingModule
+    appRoutingModule,
+    NgxPaginationModule
   ],
   exports: [
     AppComponent

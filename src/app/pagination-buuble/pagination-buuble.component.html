@@ -1,0 +1,13 @@
+<div style="text-align:center">
+    <table class="table">
+      <tbody>
+        <tr *ngFor="let item of collection.data | paginate: config">
+          <th scope="row">{{item.id}}</th>
+          <td>{{item.value}}</td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+  
+  </div>

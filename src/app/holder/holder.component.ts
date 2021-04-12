@@ -152,9 +152,12 @@ export class HolderComponent implements OnInit, AfterViewInit, OnDestroy, OnChan
 
       this.map.setCenter(event.target.b);
       const bubble = new H.ui.InfoBubble(event.target.b, {
-        content: [
+        /*content: [
           JSON.stringify(this.result)
         ].join('')
+        */
+       content:
+        '<iframe src="http://localhost:4200/bubble?param='+ encodeURIComponent(JSON.stringify(this.result)) + '" style="height:150px;width:375px;" title="Iframe Example"></iframe>'
       });
       this.localUi.getBubbles().forEach((i: any) => {
         i.close();
