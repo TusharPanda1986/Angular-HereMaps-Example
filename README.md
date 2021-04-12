@@ -2,6 +2,9 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.1.
 
+# Here map keys
+As this example uses Here Maps Javascript API, please get your keys by generating one at https://developer.here.com/projects. Without the keys, the app won't work. 
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
