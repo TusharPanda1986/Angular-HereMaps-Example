@@ -1,0 +1,34 @@
+/* You can add global styles to this file, and also import other style files */
+
+.H_ib_body {
+    width: 400px;
+    background-color: #3b3333;
+}
+
+.H_ib.H_ib_top .H_ib_tail::after {
+    border-color: #3b3333 transparent;
+}
+
+.H_ib_content {
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+}
+
+.tms-cluster {
+    border-radius: 24px;
+    width: 24px;
+    height: 24px;
+    background-color: #4b71b8;
+    box-shadow: 0px 0px 2px 8px rgba(47, 76, 170, 0.5);
+    color: #000;
+    display: flex;
+    font-size: 14px;
+    line-height: 1;
+    font-weight: 800;
+    cursor: default;
+    align-items: center;
+    justify-content: center;
+    top: -14px;
+    left: -14px;
+}

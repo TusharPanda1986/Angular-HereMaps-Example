@@ -1,0 +1,9 @@
+<input #latInput placeholder="latitude">
+<input #lngInput placeholder="longitude">
+<button class="button" (click)="onSubmit()">submit</button>
+
+<button class="button" (click)="startClusteringAgain()">Add all markers (clustering)</button>
+<button class="button" (click)="onClear()">remove all markers</button>
+<button class="button" (click)="addMarker()">add marker</button>
+<div #map style="width: 1280px; height: 720px"></div> <!-- This is 4k configuration-->
+
