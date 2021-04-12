@@ -1,4 +1,5 @@
 import { Component, ViewChild, ElementRef, AfterViewInit, OnInit, OnDestroy } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { Constants } from '../Constants';
 import { Coordinate } from '../Coordinate';
 import { RouteCoordinate } from '../RouteCoordinate';
@@ -10,6 +11,7 @@ declare var H: any;
   styleUrls: ['./playback.component.scss']
 })
 export class PlaybackComponent implements OnInit, AfterViewInit, OnDestroy {
+  apikey = environment.apikey;
   private playButton: any;
   private pauseButton: any;
   private slider: any;
@@ -81,7 +83,7 @@ export class PlaybackComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit(): void {
     this.platform = new H.service.Platform({
-      apikey: '' // get key from https://developer.here.com/projects
+      apikey: this.apikey // get key from https://developer.here.com/projects
     });
   }
 

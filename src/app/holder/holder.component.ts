@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Constants } from '../Constants';
 import { Coord } from '../coord';
 import { GeoCoordinate } from '../GeoCoordinate';
+import { environment } from 'src/environments/environment';
 
 declare var H: any;
 
@@ -14,6 +15,7 @@ declare var H: any;
 })
 export class HolderComponent implements OnInit, AfterViewInit, OnDestroy, OnChanges {
   title = 'here-project';
+  apikey = environment.apikey;
   private platform: any;
   private localUi: any;
   page = 4;
@@ -48,7 +50,7 @@ export class HolderComponent implements OnInit, AfterViewInit, OnDestroy, OnChan
 
   ngOnInit(): void {
     this.platform = new H.service.Platform({
-      apikey: '' // get key from https://developer.here.com/projects
+      apikey: this.apikey // get key from https://developer.here.com/projects
     });
 
     this.coords = Constants.airports;

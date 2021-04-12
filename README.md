@@ -3,7 +3,7 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.1.
 
 # Here map keys
-As this example uses Here Maps Javascript API, please get your keys by generating one at https://developer.here.com/projects. Without the keys, the app won't work. 
+As this example uses Here Maps Javascript API, please get your keys by generating one at https://developer.here.com/projects and add the apikey in environment.ts and environment.{{env}}.ts. Without the keys, the app won't work. 
 
 ## Development server
 
