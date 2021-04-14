@@ -156,8 +156,8 @@ export class HolderComponent implements OnInit, AfterViewInit, OnDestroy, OnChan
           JSON.stringify(this.result)
         ].join('')
         */
-       content:
-        '<iframe src="http://localhost:4200/bubble?param='+ encodeURIComponent(JSON.stringify(this.result)) + '" style="height:150px;width:375px;" title="Iframe Example"></iframe>'
+        content:
+          '<iframe src="http://localhost:4200/bubble?param=' + encodeURIComponent(JSON.stringify(this.result)) + '" style="height:150px;width:375px;" title="Iframe Example"></iframe>'
       });
       this.localUi.getBubbles().forEach((i: any) => {
         i.close();
@@ -189,10 +189,12 @@ export class HolderComponent implements OnInit, AfterViewInit, OnDestroy, OnChan
   public onClear(): void {
     const layers = this.map.getLayers();
     const length = this.map.getLayers().getLength();
-    for (let i = length - 1; i > 0; i--) {
+    for (let i = length - 1; i >= 0; i--) {
       const layerInst = layers.get(i);
-      layerInst.dispose();
-      layers.remove(layerInst);
+      if ('ml' !== layerInst.constructor.name) {
+        layerInst.dispose();
+        layers.remove(layerInst);
+      }
     }
   }
 
