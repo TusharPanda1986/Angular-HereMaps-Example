@@ -141,7 +141,7 @@ export class HolderComponent implements OnInit, AfterViewInit, OnDestroy, OnChan
       theme: themeInstance
     });
 
-    clusteredDataProvider.addEventListener('tap', (event: { target: { b: GeoCoordinate; getData: () => any; }; }) => {
+    clusteredDataProvider.addEventListener('pointerenter', (event: { target: { b: GeoCoordinate; getData: () => any; }; }) => {
       this.result.splice(0, this.result.length);
       const data = event.target.getData();
       if (data.a) {
@@ -152,10 +152,6 @@ export class HolderComponent implements OnInit, AfterViewInit, OnDestroy, OnChan
 
       this.map.setCenter(event.target.b);
       const bubble = new H.ui.InfoBubble(event.target.b, {
-        /*content: [
-          JSON.stringify(this.result)
-        ].join('')
-        */
         content:
           '<iframe src="http://localhost:4200/bubble?param=' + encodeURIComponent(JSON.stringify(this.result)) + '" style="height:150px;width:375px;" title="Iframe Example"></iframe>'
       });
@@ -164,7 +160,7 @@ export class HolderComponent implements OnInit, AfterViewInit, OnDestroy, OnChan
       });
 
       this.localUi.addBubble(bubble);
-      //console.log(bubble.getElement());
+      // console.log(bubble.getElement());
     }, true);
     return new H.map.layer.ObjectLayer(clusteredDataProvider);
   }
