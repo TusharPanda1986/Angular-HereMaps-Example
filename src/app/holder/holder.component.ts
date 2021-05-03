@@ -129,6 +129,9 @@ export class HolderComponent implements OnInit, AfterViewInit, OnDestroy, OnChan
           min: noisePoint.getMinZoom()
         });
         noiseMarker.setData(data);
+        noiseMarker.addEventListener('pointerenter', (event: { target: { b: GeoCoordinate; getData: () => any; }; }) => {
+          this.processInfoBubbleContent(event);
+        }, true);
         return noiseMarker;
       }
     };
@@ -141,28 +144,34 @@ export class HolderComponent implements OnInit, AfterViewInit, OnDestroy, OnChan
       theme: themeInstance
     });
 
-    clusteredDataProvider.addEventListener('pointerenter', (event: { target: { b: GeoCoordinate; getData: () => any; }; }) => {
-      this.result.splice(0, this.result.length);
-      const data = event.target.getData();
-      if (data.a) {
-        this.recursiveEvaluation(data.a);
-      } else {
-        this.result.push(data);
-      }
-
-      this.map.setCenter(event.target.b);
-      const bubble = new H.ui.InfoBubble(event.target.b, {
-        content:
-          '<iframe src="http://localhost:4200/bubble?param=' + encodeURIComponent(JSON.stringify(this.result)) + '" style="height:150px;width:375px;" title="Iframe Example"></iframe>'
-      });
-      this.localUi.getBubbles().forEach((i: any) => {
-        i.close();
-      });
-
-      this.localUi.addBubble(bubble);
-      // console.log(bubble.getElement());
+    clusteredDataProvider.addEventListener('tap', (event: { target: { b: GeoCoordinate; getData: () => any; }; }) => {
+      this.processInfoBubbleContent(event);
     }, true);
+
     return new H.map.layer.ObjectLayer(clusteredDataProvider);
+  }
+
+  public processInfoBubbleContent(event: { target: { b: GeoCoordinate; getData: () => any; }; }): void {
+    this.result.splice(0, this.result.length);
+    const data = event.target.getData();
+    if (data.a) {
+      this.recursiveEvaluation(data.a);
+    } else {
+      this.result.push(data);
+    }
+
+    this.map.setCenter(event.target.b);
+    const bubble = new H.ui.InfoBubble(event.target.b, {
+      content:
+        '<iframe src="http://localhost:4200/bubble?param=' + encodeURIComponent(JSON.stringify(this.result)) + '" style="height:150px;width:375px;" title="Iframe Example"></iframe>'
+    });
+
+    this.localUi.getBubbles().forEach((i: any) => {
+      i.close();
+    });
+
+    this.localUi.addBubble(bubble);
+    // console.log(bubble.getElement());
   }
 
   public recursiveEvaluation(ip: any): void {
